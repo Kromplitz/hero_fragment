@@ -13,24 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView:RecyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        val api = ApiClient.client.create(ApiInterface::class.java)
-        api.getHeroes()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe ( {
-                         if ( it.isNotEmpty()){
-
-                             val adapter = RecyclerViewAdapter(it as List<Hero>) {
-                                 //Toast.makeText(this, "clicked", Toast.LENGTH_LONG).show()
-                             }
-                             recyclerView.adapter = adapter
-                         }
-        }, {
-            Toast.makeText(this,"Error ${it.message}", Toast.LENGTH_LONG).show()
-
-        })
 
 
 
