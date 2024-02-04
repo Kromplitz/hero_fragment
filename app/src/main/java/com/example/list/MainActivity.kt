@@ -13,9 +13,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val  listfragment = supportFragmentManager.findFragmentById(R.id.listContainer) as ListFragment
 
 
+        listfragment.setItemClickListener {
+            val heroFragmentToADD = HeroFragment()
+            heroFragmentToADD.setDescription(it)
+            supportFragmentManager.beginTransaction()
+                .add(R.id.listContainer, heroFragmentToADD)
+                .commit()
 
+
+        }
 
     }
 }

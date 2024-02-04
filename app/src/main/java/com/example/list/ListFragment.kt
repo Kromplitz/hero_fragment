@@ -12,6 +12,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class ListFragment: Fragment() {
+
+
+    private var onItemClick: (String) -> Unit = {}
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,7 +38,6 @@ class ListFragment: Fragment() {
                 if ( it.isNotEmpty()){
 
                     val adapter = RecyclerViewAdapter(it as List<Hero>) {
-                        //Toast.makeText(this, "clicked", Toast.LENGTH_LONG).show()
                     }
                     recyclerView.adapter = adapter
                 }
@@ -43,8 +46,9 @@ class ListFragment: Fragment() {
 
             })
 
-
+        }
+    fun setItemClickListener(lambda: (String) -> Unit){
+        onItemClick = lambda
     }
-
 
 }
