@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
             heroFragmentToADD.setDescription(name, image)
             supportFragmentManager.beginTransaction()
                 .add(R.id.listContainer, heroFragmentToADD)
+                .addToBackStack("hero_fragment")
                 .commit()
 
 
