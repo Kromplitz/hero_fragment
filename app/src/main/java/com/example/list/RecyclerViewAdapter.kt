@@ -21,10 +21,14 @@ class RecyclerViewAdapter(val items: List<Hero>, val onClick: (String) -> Unit):
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
 
         holder.title.text = items[position].name
-        holder.itemView.setOnClickListener {onClick(items[position].name)}
+        //holder.itemView.setOnClickListener {onClick(items[position].name)}
        Glide.with(holder.itemView.context)
            .load(items[position].images.md)
            .into(holder.image)
+
+        holder.itemView.setOnClickListener {
+            onClick(items[position].name)
+        }
 
     }
 }

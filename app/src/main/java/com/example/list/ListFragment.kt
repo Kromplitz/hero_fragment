@@ -38,6 +38,7 @@ class ListFragment: Fragment() {
                 if ( it.isNotEmpty()){
 
                     val adapter = RecyclerViewAdapter(it as List<Hero>) {
+                        onItemClick(it)
                     }
                     recyclerView.adapter = adapter
                 }
