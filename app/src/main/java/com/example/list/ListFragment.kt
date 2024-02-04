@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import okhttp3.internal.threadName
 
 class ListFragment: Fragment() {
 
 
-    private var onItemClick: (String) -> Unit = {}
+    private var onItemClick: (name:String, images: String) -> Unit = {}
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +35,7 @@ class ListFragment: Fragment() {
         api.getHeroes()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe ( {
+            .subscribe ( { it ->
                 if ( it.isNotEmpty()){
 
                     val adapter = RecyclerViewAdapter(it as List<Hero>) {
@@ -48,7 +49,7 @@ class ListFragment: Fragment() {
             })
 
         }
-    fun setItemClickListener(lambda: (String) -> Unit){
+    fun setItemClickListener(lambda: (String, String) -> Unit){
         onItemClick = lambda
     }
 

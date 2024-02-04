@@ -35,9 +35,6 @@ class HeroFragment: Fragment() {
      description = title
     }
 
-    fun show() {
-     titleTextView?.text = description
-    }
 
 
 }
