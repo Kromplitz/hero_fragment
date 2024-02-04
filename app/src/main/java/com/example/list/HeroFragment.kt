@@ -18,6 +18,8 @@ class HeroFragment: Fragment() {
     private var dataTextView:TextView? = null
     private var imageView:ImageView? = null
     private var heroImageUrl:String = ""
+    private var dataskills:String =""
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +32,7 @@ class HeroFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         titleTextView = view.findViewById(R.id.heroTitle)
-        dataTextView = view.findViewById(R.id.heroData)
+        //dataTextView = view.findViewById(R.id.heroData)
         imageView = view.findViewById(R.id.heroImage)
 
         Glide.with(view.context)
@@ -39,10 +41,12 @@ class HeroFragment: Fragment() {
 
         titleTextView?.text = description
 
+
     }
     fun setDescription(title: String, image: String){
      description = title
         heroImageUrl = image
+
     }
 
 
