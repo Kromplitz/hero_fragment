@@ -10,12 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import okhttp3.internal.threadName
 
 class ListFragment: Fragment() {
 
 
-    private var onItemClick: (name:String, images: String) -> Unit = {}
+    private var onItemClick: (String,  String) -> Unit = { s: String, s1: String -> }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,8 +37,8 @@ class ListFragment: Fragment() {
             .subscribe ( { it ->
                 if ( it.isNotEmpty()){
 
-                    val adapter = RecyclerViewAdapter(it as List<Hero>) {
-                        onItemClick(it)
+                    val adapter = RecyclerViewAdapter(it as List<Hero>) { name, image ->
+                        onItemClick(name, image)
                     }
                     recyclerView.adapter = adapter
                 }

@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
         val  listfragment = supportFragmentManager.findFragmentById(R.id.listContainer) as ListFragment
 
 
-        listfragment.setItemClickListener {
+        listfragment.setItemClickListener { name, image ->
             val heroFragmentToADD = HeroFragment()
-            heroFragmentToADD.setDescription(it)
+            heroFragmentToADD.setDescription(name, image)
             supportFragmentManager.beginTransaction()
                 .add(R.id.listContainer, heroFragmentToADD)
                 .commit()
